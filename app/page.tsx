@@ -495,13 +495,6 @@ export default function Home() {
                 </div>
                 <div className="flex flex-wrap gap-3">
                   <a
-                    href="mailto:ghimireashish1@gmail.com?subject=Casting Inquiry for Ashish Ghimire"
-                    className="inline-flex items-center gap-2 rounded-full bg-[var(--accent-blue)] px-5 py-3 text-sm font-semibold uppercase tracking-wide text-black shadow-[0_12px_40px_rgba(26,209,255,0.25)] transition hover:-translate-y-0.5 hover:shadow-[0_16px_50px_rgba(26,209,255,0.35)]"
-                    aria-label="Book Ashish Ghimire for casting"
-                  >
-                    Book for Casting
-                  </a>
-                  <a
                     href="#top"
                     className="inline-flex items-center gap-2 rounded-full border border-white/10 px-5 py-3 text-sm font-semibold uppercase tracking-wide text-white transition hover:border-[var(--accent-gold)] hover:text-[var(--accent-gold)]"
                   >
