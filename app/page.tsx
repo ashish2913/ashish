@@ -131,401 +131,210 @@ const SocialIcon = ({ type }: { type: string }) => {
 };
 
 export default function Home() {
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
+    },
+  };
+
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.12,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
   return (
-    <div className="bg-[#050505] text-zinc-100">
-      <div className="fixed inset-0 -z-10 bg-[radial-gradient(circle_at_20%_20%,rgba(212,175,55,0.08),transparent_35%),radial-gradient(circle_at_80%_10%,rgba(26,209,255,0.08),transparent_30%),radial-gradient(circle_at_40%_70%,rgba(255,255,255,0.04),transparent_40%)]" />
+    <div className="bg-[#030303] text-zinc-100">
+      {/* Background Mesh Gradients */}
+      <div className="fixed inset-0 -z-10 overflow-hidden">
+        <div className="mesh-glow top-[-10%] left-[-5%] bg-[var(--accent-gold)]" />
+        <div className="mesh-glow top-[20%] right-[-10%] bg-[var(--accent-blue)]" />
+        <div className="mesh-glow bottom-[-5%] left-[10%] bg-white/10" />
+      </div>
 
       <main className="min-h-screen w-full">
         {/* Hero */}
-        <section id="top" className="relative isolate overflow-hidden">
+        <section id="top" className="relative isolate min-h-screen overflow-hidden">
           <div
             className="absolute inset-0 -z-10 bg-cover bg-center bg-fixed"
             style={{
               backgroundImage:
-                "linear-gradient(115deg, rgba(0,0,0,0.82), rgba(5,5,5,0.92) 42%, rgba(0,0,0,0.72)), url('https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=2000&q=90')",
+                "linear-gradient(to bottom, rgba(3,3,3,0.7), rgba(3,3,3,0.95)), url('https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=2000&q=90')",
             }}
           />
-          <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_60%_40%,rgba(26,209,255,0.25),transparent_45%)]" />
 
-          <div className="mx-auto flex min-h-screen max-w-6xl flex-col gap-10 px-6 pb-24 pt-28 md:flex-row md:items-center md:pb-28 md:pt-32">
-            <motion.div initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} transition={{duration: 0.8, delay: 0.2}} className="flex-1 space-y-6">
-              <p className="flex items-center gap-2 text-xs uppercase tracking-[0.35em] text-zinc-300">
-                <SparklesIcon className="h-4 w-4 text-[var(--accent-gold)]" />
-                Nepali Film Star
-              </p>
-              <h1 className="text-4xl font-black tracking-tight text-white sm:text-5xl md:text-6xl">
-                ASHISH GHIMIRE
-              </h1>
-              <p className="text-lg uppercase tracking-[0.25em] text-zinc-200">
-                Nepali Film Actor
-              </p>
-              <p className="max-w-xl text-base leading-relaxed text-zinc-200">
-                &quot;Rising Star of Nepali Cinema&quot; — blending raw authenticity with
-                modern charisma. Ashish brings cinematic intensity to every
-                frame, captivating audiences and directors alike.
-              </p>
-              <div className="flex flex-wrap items-center gap-3">
+          <div className="mx-auto flex min-h-screen max-w-6xl flex-col gap-12 px-6 pb-24 pt-32 md:flex-row md:items-center md:pb-28 md:pt-36">
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={staggerContainer}
+              className="flex-1 space-y-8"
+            >
+              <motion.div variants={fadeInUp} className="flex items-center gap-3">
+                <span className="h-px w-8 bg-[var(--accent-gold)]" />
+                <p className="text-xs font-bold uppercase tracking-[0.4em] text-[var(--accent-gold)]">
+                  Nepali Film Star
+                </p>
+              </motion.div>
+
+              <motion.h1
+                variants={fadeInUp}
+                className="text-5xl font-black tracking-tight text-white sm:text-7xl lg:text-8xl"
+              >
+                ASHISH <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-white/80 to-white/40">
+                  GHIMIRE
+                </span>
+              </motion.h1>
+
+              <motion.p
+                variants={fadeInUp}
+                className="max-w-xl text-lg leading-relaxed text-zinc-400"
+              >
+                &quot;Rising Star of Nepali Cinema&quot; — blending raw
+                authenticity with modern charisma. Ashish brings cinematic
+                intensity to every frame, captivating audiences and directors
+                alike.
+              </motion.p>
+
+              <motion.div variants={fadeInUp} className="flex flex-wrap items-center gap-5">
                 <a
                   href="#portfolio"
-                  className="group inline-flex items-center gap-2 rounded-full bg-[var(--accent-blue)] px-5 py-3 text-sm font-semibold uppercase tracking-wide text-black shadow-[0_12px_40px_rgba(26,209,255,0.25)] transition hover:-translate-y-0.5 hover:shadow-[0_15px_50px_rgba(26,209,255,0.35)]"
+                  className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-white px-8 py-4 text-sm font-bold uppercase tracking-widest text-black transition-transform hover:scale-105"
                 >
                   <PlayIcon className="h-5 w-5" /> View Portfolio
                 </a>
                 <a
                   href="#contact"
-                  className="inline-flex items-center gap-2 rounded-full border border-[var(--accent-gold)] px-5 py-3 text-sm font-semibold uppercase tracking-wide text-[var(--accent-gold)] transition hover:-translate-y-0.5 hover:border-[var(--accent-blue)] hover:text-[var(--accent-blue)]"
+                  className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-8 py-4 text-sm font-bold uppercase tracking-widest text-white backdrop-blur-sm transition-all hover:bg-white hover:text-black"
                 >
                   Contact
                 </a>
-              </div>
-              <div className="grid grid-cols-2 gap-4 sm:max-w-lg">
+              </motion.div>
+
+              <motion.div
+                variants={fadeInUp}
+                className="grid grid-cols-2 gap-6 pt-4 sm:max-w-md"
+              >
                 {stats.map((item) => (
-                  <div
-                    key={item.label}
-                    className="rounded-lg border border-white/5 bg-white/5 px-4 py-3 shadow-[0_12px_40px_rgba(0,0,0,0.35)] backdrop-blur"
-                  >
-                    <p className="text-xs uppercase tracking-[0.2em] text-zinc-400">
+                  <div key={item.label} className="space-y-1">
+                    <p className="text-[10px] uppercase tracking-[0.3em] text-zinc-500">
                       {item.label}
                     </p>
-                    <p className="text-lg font-semibold text-white">
-                      {item.value}
-                    </p>
+                    <p className="text-xl font-medium text-white">{item.value}</p>
                   </div>
                 ))}
-              </div>
+              </motion.div>
             </motion.div>
 
-            <motion.div initial={{opacity: 0, scale: 0.95}} animate={{opacity: 1, scale: 1}} transition={{duration: 1, delay: 0.4}} className="relative flex-1">
-              <div className="absolute -left-6 -top-6 h-24 w-24 rounded-full bg-[var(--accent-blue)]/20 blur-3xl" />
-              <div className="absolute -right-4 bottom-10 h-20 w-20 rounded-full bg-[var(--accent-gold)]/25 blur-3xl" />
-              <div className="relative overflow-hidden rounded-3xl border border-white/5 bg-gradient-to-br from-white/10 via-white/5 to-transparent shadow-[0_30px_70px_rgba(0,0,0,0.5)] backdrop-blur">
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
+              className="relative flex-1"
+            >
+              <div className="absolute -inset-4 rounded-[40px] bg-gradient-to-tr from-[var(--accent-blue)]/20 to-[var(--accent-gold)]/20 blur-2xl" />
+              <div className="relative overflow-hidden rounded-[32px] border border-white/10 bg-black shadow-2xl transition-transform duration-700 hover:scale-[1.02]">
                 <div
-                  className="aspect-[3/4] bg-cover bg-center"
+                  className="aspect-[4/5] bg-cover bg-center grayscale-[0.2] transition-all duration-700 hover:grayscale-0"
                   style={{
                     backgroundImage:
-                      "linear-gradient(180deg, rgba(0,0,0,0.1), rgba(0,0,0,0.5)), url('/ashish.png')",
+                      "linear-gradient(to top, rgba(0,0,0,0.8), transparent), url('/ashish.png')",
                   }}
                 />
-                <div className="absolute inset-x-0 bottom-0 flex items-center justify-between px-5 py-4 bg-gradient-to-t from-black via-black/70 to-transparent">
-                  <div>
-                    <p className="text-xs uppercase tracking-[0.25em] text-[var(--accent-blue)]">
-                      Feature
-                    </p>
-                    <p className="text-lg font-semibold text-white">Hostel 3</p>
-                  </div>
-                  <div className="rounded-full border border-white/15 px-3 py-1 text-xs text-white/80">
-                    2024
-                  </div>
+                <div className="absolute inset-x-0 bottom-0 p-8">
+                  <p className="text-[10px] uppercase tracking-[0.4em] text-[var(--accent-blue)]">
+                    Latest Project
+                  </p>
+                  <h3 className="text-2xl font-bold text-white">Hostel 3</h3>
                 </div>
               </div>
             </motion.div>
           </div>
-          <motion.div initial={{opacity: 0}} animate={{opacity: 1}} transition={{delay: 1.5, duration: 1}} className="absolute inset-x-0 bottom-8 flex justify-center">
-            <div className="animate-bounce rounded-full border border-white/20 px-4 py-2 text-xs uppercase tracking-[0.3em] text-white/70">
-              Scroll
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 2, duration: 1 }}
+            className="absolute inset-x-0 bottom-12 flex justify-center"
+          >
+            <div className="flex flex-col items-center gap-3">
+              <span className="text-[10px] uppercase tracking-[0.5em] text-white/40">
+                Scroll
+              </span>
+              <div className="h-12 w-px bg-gradient-to-b from-white/40 to-transparent" />
             </div>
           </motion.div>
         </section>
 
         {/* About */}
-        <section id="about" className="mx-auto max-w-6xl px-6 py-20 md:py-24">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={{hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, staggerChildren: 0.2 } }}} className="grid gap-10 md:grid-cols-[1.2fr_1fr] md:items-center">
-            <motion.div variants={{hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 }}} className="space-y-4">
-              <p className="text-xs uppercase tracking-[0.3em] text-[var(--accent-gold)]">
-                About
-              </p>
-              <h2 className="text-3xl font-bold text-white sm:text-4xl">
-                Ashish Ghimire - Feel it. Live it . That&apos;s my story
-              </h2>
-              <p className="text-base leading-relaxed text-zinc-300 text-justify">
-                Ashish Ghimire is a Nepali actor recognized for his role as Shiva in Hostel 3 (2025)—a performance that lingered long after the screen went silent. His journey began early with Meri Bassai, portraying Dhundhukari, but it was at Aarohan Gurukul, under the mentorship of Sunil Pokharel, where his craft was sharpened with discipline and intention. Growing up within a creative environment, he developed a presence that is calm yet compelling—never forced, always felt. With a subtle intensity and an instinct for truth, Ashish stands as part of a new generation of Nepali cinema—one that speaks less, but resonates deeper.
-              </p>
-            </motion.div>
-            <motion.div variants={{hidden: { opacity: 0, x: 20 }, visible: { opacity: 1, x: 0 }}} className="relative overflow-hidden rounded-2xl border border-white/5 bg-white/5 p-1 shadow-[0_20px_60px_rgba(0,0,0,0.45)] backdrop-blur">
-              <div className="relative overflow-hidden rounded-xl bg-gradient-to-br from-black via-zinc-900 to-black">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(212,175,55,0.1),transparent_35%),radial-gradient(circle_at_80%_50%,rgba(26,209,255,0.12),transparent_40%)]" />
-                <div className="relative grid grid-cols-2">
-                  {stats.map((item) => (
-                    <div
-                      key={item.label}
-                      className="border-white/5 px-5 py-6 text-sm text-white/80 [&:nth-child(odd)]:border-r [&:nth-child(-n+2)]:border-b"
-                    >
-                      <p className="text-[11px] uppercase tracking-[0.25em] text-zinc-400">
-                        {item.label}
-                      </p>
-                      <p className="mt-2 text-lg font-semibold text-white">
-                        {item.value}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-        </section>
-
-        {/* Filmography */}
-        <section
-          id="portfolio"
-          className="bg-white/5 border-t border-b border-white/5 py-20"
-        >
-          <div className="mx-auto max-w-6xl px-6 py-20 md:py-20">
-            <div className="flex items-center justify-between gap-6 pb-8">
-              <div>
-                <p className="text-xs uppercase tracking-[0.3em] text-[var(--accent-gold)]">
-                  Filmography
-                </p>
-                <h3 className="text-3xl font-bold text-white sm:text-4xl">
-                  Featured Work
-                </h3>
-              </div>
-              <a
-                href="#contact"
-                className="hidden rounded-full border border-white/15 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-white/80 transition hover:border-[var(--accent-blue)] hover:text-[var(--accent-blue)] md:inline-flex"
-              >
-                Book for Casting
-              </a>
-            </div>
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={{hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.2 } }}} className="grid gap-6 md:grid-cols-2">
-              {films.map((film) => (
-                <motion.article variants={{hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 }}}
-                  key={film.title}
-                  className="group relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-zinc-900 via-zinc-900/70 to-black p-6 shadow-[0_20px_60px_rgba(0,0,0,0.35)] transition-transform duration-300 hover:-translate-y-2"
-                >
-                  <div className="absolute inset-0 opacity-0 transition group-hover:opacity-100">
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(26,209,255,0.12),transparent_35%),radial-gradient(circle_at_80%_50%,rgba(212,175,55,0.12),transparent_35%)]" />
-                  </div>
-                  <div className="relative flex items-start justify-between gap-4">
-                    <div>
-                      <p className="text-xs uppercase tracking-[0.3em] text-[var(--accent-blue)]">
-                        {film.year}
-                      </p>
-                      <h4 className="mt-2 text-2xl font-semibold text-white">
-                        {film.title}
-                      </h4>
-                      <p className="text-sm uppercase tracking-[0.25em] text-zinc-300">
-                        {film.role}
-                      </p>
-                    </div>
-                    <span className="rounded-full border border-white/15 px-3 py-1 text-[11px] uppercase tracking-[0.2em] text-white/70">
-                      Feature
-                    </span>
-                  </div>
-                  <p className="relative mt-4 text-sm leading-relaxed text-zinc-300">
-                    {film.description}
-                  </p>
-                </motion.article>
-              ))}
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Gallery */}
-        <section id="gallery" className="mx-auto max-w-6xl px-6 py-20 md:py-24">
-          <div className="flex items-center justify-between gap-6 pb-8">
-            <div>
-              <p className="text-xs uppercase tracking-[0.3em] text-[var(--accent-gold)]">
-                Gallery
-              </p>
-              <h3 className="text-3xl font-bold text-white sm:text-4xl">
-                Frames & Moments
-              </h3>
-            </div>
-          </div>
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={{hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.1 } }}} className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {galleryItems.map((item) => (
-              <motion.div variants={{hidden: { opacity: 0, scale: 0.9 }, visible: { opacity: 1, scale: 1 }}}
-                key={item.label}
-                className="group relative overflow-hidden rounded-2xl border border-white/5 bg-white/5 shadow-[0_15px_40px_rgba(0,0,0,0.4)]"
-              >
-                <div
-                  className="aspect-[4/5] bg-cover bg-center transition duration-500 group-hover:scale-110"
-                  style={{ backgroundImage: `url(${item.image})` }}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-70 transition duration-500 group-hover:opacity-100" />
-                <div className="absolute bottom-0 left-0 right-0 flex items-center justify-between px-4 py-3 text-sm text-white">
-                  <span className="font-semibold">{item.label}</span>
-                  <span className="rounded-full bg-white/10 px-3 py-1 text-[11px] uppercase tracking-[0.2em] text-white/80">
-                    View
-                  </span>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </section>
-
-        {/* Showreel */}
-        <section
-          id="showreel"
-          className="bg-gradient-to-b from-black via-zinc-950 to-black py-20 md:py-24"
-        >
-          <motion.div initial={{opacity: 0, y: 20}} whileInView={{opacity: 1, y: 0}} viewport={{once: true, margin: "-100px"}} transition={{duration: 0.8}} className="mx-auto max-w-5xl px-6 text-center">
-            <p className="text-xs uppercase tracking-[0.3em] text-[var(--accent-gold)]">
-              Showreel
-            </p>
-            <h3 className="mt-2 text-3xl font-bold text-white sm:text-4xl">
-              Official Acting Showreel
-            </h3>
-            <p className="mt-4 text-base text-zinc-300">
-              High-impact highlights capturing Ashish&apos;s range across drama,
-              youth narratives, and modern Nepali cinema.
-            </p>
-            <motion.div initial={{opacity: 0, y: 30}} whileInView={{opacity: 1, y: 0}} viewport={{ once: true, margin: "-100px" }} transition={{duration: 0.8}} className="relative mt-8 overflow-hidden rounded-3xl border border-white/10 bg-black shadow-[0_25px_70px_rgba(0,0,0,0.5)]">
-              <div className="aspect-video bg-[radial-gradient(circle_at_30%_30%,rgba(26,209,255,0.2),transparent_35%),radial-gradient(circle_at_70%_70%,rgba(212,175,55,0.15),transparent_40%)]" />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <button className="group flex h-16 w-16 items-center justify-center rounded-full bg-white/15 backdrop-blur transition hover:scale-105">
-                  <PlayIcon className="h-8 w-8 text-white transition group-hover:scale-110" />
-                </button>
-              </div>
-            </motion.div>
-          </motion.div>
-        </section>
-
-        {/* Skills */}
-        <section id="skills" className="mx-auto max-w-6xl px-6 py-20 md:py-24">
-          <div className="flex items-center justify-between pb-8">
-            <div>
-              <p className="text-xs uppercase tracking-[0.3em] text-[var(--accent-gold)]">
-                Skills
-              </p>
-              <h3 className="text-3xl font-bold text-white sm:text-4xl">
-                On-Screen Strengths
-              </h3>
-            </div>
-          </div>
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={{hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.1 } }}} className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {skills.map((skill) => (
-              <motion.div variants={{hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 }}}
-                key={skill}
-                className="group relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-zinc-900 to-zinc-950 p-6 shadow-[0_15px_45px_rgba(0,0,0,0.45)] transition hover:-translate-y-1"
-              >
-                <div className="absolute inset-0 opacity-0 transition group-hover:opacity-100">
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(26,209,255,0.15),transparent_35%),radial-gradient(circle_at_80%_70%,rgba(212,175,55,0.12),transparent_35%)]" />
-                </div>
-                <div className="relative flex items-center gap-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/5 text-[var(--accent-blue)]">
-                    <SparklesIcon className="h-6 w-6" />
-                  </div>
-                  <div>
-                    <p className="text-lg font-semibold text-white">{skill}</p>
-                    <p className="text-sm text-zinc-400">
-                      Precision • Presence • Emotion
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </section>
-
-        {/* Social */}
-        <section
-          id="social"
-          className="bg-gradient-to-b from-black via-zinc-950 to-black py-20 md:py-24"
-        >
+        <section id="about" className="relative py-32 overflow-hidden">
           <div className="mx-auto max-w-6xl px-6">
-            <div className="flex items-center justify-between pb-8">
-              <div>
-                <p className="text-xs uppercase tracking-[0.3em] text-[var(--accent-gold)]">
-                  Social
-                </p>
-                <h3 className="text-3xl font-bold text-white sm:text-4xl">
-                  Stay Connected
-                </h3>
-                <p className="mt-2 text-sm text-zinc-300">
-                  Follow Ashish for casting news, behind-the-scenes, and film
-                  drops.
-                </p>
-              </div>
-            </div>
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={{hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.1 } }}} className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              {socials.map((item) => (
-                <motion.a variants={{hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 }}}
-                  key={item.name}
-                  href={item.href}
-                  target={item.href.startsWith("http") ? "_blank" : undefined}
-                  rel={item.href.startsWith("http") ? "noreferrer" : undefined}
-                  className="group relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-zinc-900 to-zinc-950 p-5 shadow-[0_15px_45px_rgba(0,0,0,0.45)] transition hover:-translate-y-1"
-                >
-                  <div className="absolute inset-0 opacity-0 transition group-hover:opacity-100">
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(26,209,255,0.15),transparent_35%),radial-gradient(circle_at_80%_70%,rgba(212,175,55,0.12),transparent_35%)]" />
-                  </div>
-                  <div className="relative flex items-center gap-3">
-                    <span className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-[var(--accent-blue)]">
-                      <SocialIcon type={item.icon} />
-                    </span>
-                    <div>
-                      <p className="text-sm uppercase tracking-[0.2em] text-zinc-400">
-                        {item.name}
-                      </p>
-                      <p className="text-lg font-semibold text-white">
-                        {item.handle}
-                      </p>
-                    </div>
-                  </div>
-                </motion.a>
-              ))}
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Contact */}
-        <section
-          id="contact"
-          className="bg-white/5 border-t border-b border-white/5 py-20"
-        >
-          <div className="mx-auto max-w-6xl px-6 py-20 md:py-20">
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={{hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.2 } }}} className="grid gap-12 md:grid-cols-2 md:items-center">
-              <motion.div variants={{hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0 }}} className="space-y-4">
-                <p className="text-xs uppercase tracking-[0.3em] text-[var(--accent-gold)]">
-                  Contact
-                </p>
-                <h3 className="text-3xl font-bold text-white sm:text-4xl">
-                  Book for Casting
-                </h3>
-                <p className="text-base text-zinc-300">
-                  Ready for your next production? Reach out for casting, brand
-                  collaborations, or special appearances.
-                </p>
-                <div className="space-y-2 text-sm text-zinc-200">
-                  <p>
-                    Facebook: <span className="text-white">Ashish Ghimire</span>
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              variants={staggerContainer}
+              className="grid gap-20 md:grid-cols-[1.2fr_1fr] md:items-center"
+            >
+              <motion.div variants={fadeInUp} className="space-y-8">
+                <div className="space-y-2">
+                  <p className="text-xs font-bold uppercase tracking-[0.4em] text-[var(--accent-gold)]">
+                    The Story
                   </p>
-                  <p>
-                    Email:{" "}
-                    <span className="text-white">ghimireashish1@gmail.com</span>
-                  </p>
+                  <h2 className="text-4xl font-bold leading-tight text-white sm:text-5xl">
+                    Ashish Ghimire — <br />
+                    <span className="glitter-text">Feel it. Live it. That&apos;s my story.</span>
+                  </h2>
                 </div>
-                <div className="flex flex-wrap gap-3">
-                  <a
-                    href="#top"
-                    className="inline-flex items-center gap-2 rounded-full border border-white/10 px-5 py-3 text-sm font-semibold uppercase tracking-wide text-white transition hover:border-[var(--accent-gold)] hover:text-[var(--accent-gold)]"
-                  >
-                    Back to Top
-                  </a>
+                <p className="text-lg leading-relaxed text-zinc-400 text-justify">
+                  Ashish Ghimire is a Nepali actor recognized for his role as Shiva
+                  in Hostel 3 (2025)—a performance that lingered long after the
+                  screen went silent. His journey began early with Meri Bassai,
+                  portraying Dhundhukari, but it was at Aarohan Gurukul, under the
+                  mentorship of Sunil Pokharel, where his craft was sharpened with
+                  discipline and intention.
+                </p>
+                <div className="flex items-center gap-6 pt-4">
+                  <div className="h-12 w-12 rounded-full border border-white/10 p-1">
+                    <div className="h-full w-full rounded-full bg-gradient-to-tr from-[var(--accent-gold)] to-white/20" />
+                  </div>
+                  <p className="text-sm font-medium italic text-zinc-300">
+                    &quot;Cinema is not just acting; it&apos;s breathing life into the
+                    unspoken.&quot;
+                  </p>
                 </div>
               </motion.div>
-              <motion.div variants={{hidden: { opacity: 0, x: 20 }, visible: { opacity: 1, x: 0 }}} className="relative overflow-hidden rounded-2xl border border-white/5 bg-gradient-to-br from-zinc-900 via-black to-zinc-950 p-8 shadow-[0_20px_60px_rgba(0,0,0,0.45)]">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_20%,rgba(26,209,255,0.16),transparent_35%),radial-gradient(circle_at_80%_60%,rgba(212,175,55,0.14),transparent_35%)]" />
-                <div className="relative space-y-4 text-left">
-                  <p className="text-sm uppercase tracking-[0.25em] text-zinc-400">
-                    Availability
-                  </p>
-                  <p className="text-2xl font-semibold text-white">
-                    Open for Films, Series, Music Videos
-                  </p>
-                  <p className="text-zinc-300">
-                    Currently prioritizing bold, character-driven stories and
-                    fresh Nepali narratives.
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {["Drama", "Youth", "Action", "Romance", "Comedy"].map((tag) => (
-                      <span
-                        key={tag}
-                        className="rounded-full border border-white/10 px-3 py-1 text-xs uppercase tracking-[0.2em] text-white/70"
-                      >
-                        {tag}
-                      </span>
+
+              <motion.div
+                variants={{
+                  hidden: { opacity: 0, scale: 0.9 },
+                  visible: {
+                    opacity: 1,
+                    scale: 1,
+                    transition: { duration: 1, ease: [0.16, 1, 0.3, 1] },
+                  },
+                }}
+                className="glass-card p-1"
+              >
+                <div className="relative overflow-hidden rounded-[20px] bg-zinc-900/50 p-8">
+                  <div className="grid grid-cols-2 gap-12">
+                    {stats.map((item) => (
+                      <div key={item.label} className="space-y-3">
+                        <div className="h-1 w-8 bg-white/10" />
+                        <p className="text-[10px] uppercase tracking-[0.3em] text-zinc-500">
+                          {item.label}
+                        </p>
+                        <p className="text-xl font-bold text-white">{item.value}</p>
+                      </div>
                     ))}
                   </div>
                 </div>
@@ -533,36 +342,225 @@ export default function Home() {
             </motion.div>
           </div>
         </section>
+
+        {/* Filmography */}
+        <section id="portfolio" className="py-32">
+          <div className="mx-auto max-w-6xl px-6">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              variants={staggerContainer}
+              className="space-y-16"
+            >
+              <motion.div variants={fadeInUp} className="flex items-end justify-between">
+                <div className="space-y-4">
+                  <p className="text-xs font-bold uppercase tracking-[0.4em] text-[var(--accent-gold)]">
+                    Filmography
+                  </p>
+                  <h3 className="text-4xl font-bold text-white sm:text-5xl">
+                    Selected Works
+                  </h3>
+                </div>
+                <div className="hidden h-px flex-1 bg-white/10 mx-12 md:block" />
+              </motion.div>
+
+              <div className="grid gap-8 md:grid-cols-2">
+                {films.map((film) => (
+                  <motion.article
+                    key={film.title}
+                    variants={fadeInUp}
+                    className="glass-card group relative p-10"
+                  >
+                    <div className="absolute top-0 right-0 p-8 opacity-10 transition-opacity group-hover:opacity-100">
+                      <SparklesIcon className="h-6 w-6 text-[var(--accent-gold)]" />
+                    </div>
+                    <div className="space-y-6">
+                      <div className="space-y-2">
+                        <p className="text-[10px] font-bold uppercase tracking-[0.4em] text-[var(--accent-blue)]">
+                          {film.year}
+                        </p>
+                        <h4 className="text-3xl font-bold text-white">{film.title}</h4>
+                        <p className="text-xs uppercase tracking-[0.3em] text-zinc-500 font-bold">
+                          Role: {film.role}
+                        </p>
+                      </div>
+                      <p className="text-zinc-400 leading-relaxed">
+                        {film.description}
+                      </p>
+                    </div>
+                  </motion.article>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Gallery */}
+        <section id="gallery" className="py-32">
+          <div className="mx-auto max-w-6xl px-6">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              variants={staggerContainer}
+              className="space-y-16"
+            >
+              <motion.div variants={fadeInUp} className="text-center space-y-4">
+                <p className="text-xs font-bold uppercase tracking-[0.4em] text-[var(--accent-gold)]">
+                  Visuals
+                </p>
+                <h3 className="text-4xl font-bold text-white sm:text-5xl">
+                  Frames & Moments
+                </h3>
+              </motion.div>
+
+              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                {galleryItems.map((item) => (
+                  <motion.div
+                    key={item.label}
+                    variants={{
+                      hidden: { opacity: 0, scale: 0.95 },
+                      visible: { opacity: 1, scale: 1 },
+                    }}
+                    className="group relative aspect-[4/5] overflow-hidden rounded-3xl border border-white/10 bg-zinc-900"
+                  >
+                    <div
+                      className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 group-hover:scale-110"
+                      style={{ backgroundImage: `url(${item.image})` }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-60 transition-opacity group-hover:opacity-100" />
+                    <div className="absolute inset-0 flex flex-col justify-end p-8 translate-y-4 transition-transform duration-500 group-hover:translate-y-0">
+                      <p className="text-xs font-bold uppercase tracking-[0.3em] text-[var(--accent-blue)]">
+                        Explore
+                      </p>
+                      <h4 className="text-xl font-bold text-white">{item.label}</h4>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Skills */}
+        <section id="skills" className="py-32">
+          <div className="mx-auto max-w-6xl px-6">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              variants={staggerContainer}
+              className="space-y-16"
+            >
+              <motion.div variants={fadeInUp} className="space-y-4">
+                <p className="text-xs font-bold uppercase tracking-[0.4em] text-[var(--accent-gold)]">
+                  Expertise
+                </p>
+                <h3 className="text-4xl font-bold text-white sm:text-5xl">
+                  Crafting the Persona
+                </h3>
+              </motion.div>
+
+              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                {skills.map((skill) => (
+                  <motion.div
+                    key={skill}
+                    variants={fadeInUp}
+                    className="glass-card group p-8 hover:bg-white/5"
+                  >
+                    <SparklesIcon className="h-5 w-5 text-white/20 transition-colors group-hover:text-[var(--accent-blue)]" />
+                    <p className="mt-6 text-lg font-bold text-white uppercase tracking-wider">
+                      {skill}
+                    </p>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Contact */}
+        <section id="contact" className="py-32">
+          <div className="mx-auto max-w-6xl px-6">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              variants={staggerContainer}
+              className="glass-card relative overflow-hidden p-12 md:p-20"
+            >
+              <div className="mesh-glow -bottom-1/2 -right-1/4 bg-[var(--accent-blue)] opacity-10" />
+              <div className="relative grid gap-16 md:grid-cols-2">
+                <div className="space-y-8">
+                  <div className="space-y-4">
+                    <p className="text-xs font-bold uppercase tracking-[0.4em] text-[var(--accent-gold)]">
+                      Collaboration
+                    </p>
+                    <h3 className="text-4xl font-bold text-white sm:text-6xl">
+                      Let&apos;s Build the <br /> Next Story.
+                    </h3>
+                  </div>
+                  <div className="space-y-4">
+                    <p className="text-zinc-400">
+                      ghimireashish1@gmail.com
+                    </p>
+                    <div className="flex gap-4">
+                      {socials.map((social) => (
+                        <a
+                          key={social.name}
+                          href={social.href}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 transition-all hover:bg-white hover:text-black"
+                        >
+                          <SocialIcon type={social.icon} />
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex flex-col justify-between space-y-12">
+                  <div className="space-y-6">
+                    <p className="text-sm font-bold uppercase tracking-[0.3em] text-white/40">
+                      Availability
+                    </p>
+                    <div className="flex flex-wrap gap-3">
+                      {["Drama", "Action", "Series", "Features", "Comedy"].map((tag) => (
+                        <span
+                          key={tag}
+                          className="rounded-full border border-white/10 px-6 py-2 text-[10px] font-bold uppercase tracking-widest text-white/80"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  <a
+                    href="mailto:ghimireashish1@gmail.com"
+                    className="group inline-flex items-center justify-between rounded-full bg-white px-10 py-5 text-sm font-bold uppercase tracking-[0.2em] text-black transition-transform hover:scale-[1.02]"
+                  >
+                    Start a Conversation
+                    <span className="ml-4 transition-transform group-hover:translate-x-2">
+                      →
+                    </span>
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </section>
       </main>
 
-      <footer className="border-t border-white/10 bg-black/80 py-8 backdrop-blur">
-        <div className="mx-auto flex max-w-6xl flex-col gap-4 px-6 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-sm text-zinc-400">
-            © Ashish Ghimire | Nepali Film Actor
+      <footer className="border-t border-white/5 py-12">
+        <div className="mx-auto flex max-w-6xl flex-col gap-8 px-6 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-[10px] font-bold uppercase tracking-[0.5em] text-white/30">
+            © 2024 ASHISH GHIMIRE • ALL RIGHTS RESERVED
           </p>
-          <div className="flex items-center gap-3 text-sm text-zinc-300">
-            <a
-              className="hover:text-[var(--accent-blue)]"
-              href="https://www.instagram.com/ghimireashish1/"
-              target="_blank"
-            >
-              Instagram
-            </a>
-            <span className="h-1 w-1 rounded-full bg-zinc-600" />
-            <a
-              className="hover:text-[var(--accent-blue)]"
-              href="https://www.facebook.com/ashish.ghimire.123601"
-              target="_blank"
-            >
-              Facebook
-            </a>
-            <span className="h-1 w-1 rounded-full bg-zinc-600" />
-            <a
-              className="hover:text-[var(--accent-blue)]"
-              href="https://www.imdb.com/name/nm16679476/?ref_=ext_shr_lnk"
-              target="_blank"
-            >
-              IMDB
+          <div className="flex items-center gap-6">
+            <a href="#top" className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/50 hover:text-white transition-colors">
+              Back to top ↑
             </a>
           </div>
         </div>
