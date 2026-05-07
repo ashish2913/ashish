@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { PlayIcon, SparklesIcon } from "@heroicons/react/24/solid";
 
 const stats = [
@@ -131,16 +131,16 @@ const SocialIcon = ({ type }: { type: string }) => {
 };
 
 export default function Home() {
-  const fadeInUp = {
+  const fadeInUp: Variants = {
     hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
+      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as const },
     },
   };
 
-  const staggerContainer = {
+  const staggerContainer: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -238,7 +238,7 @@ export default function Home() {
             <motion.div
               initial={{ opacity: 0, x: 40 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
+              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] as const, delay: 0.4 }}
               className="relative flex-1"
             >
               <div className="absolute -inset-4 rounded-[40px] bg-gradient-to-tr from-[var(--accent-blue)]/20 to-[var(--accent-gold)]/20 blur-2xl" />
@@ -320,7 +320,7 @@ export default function Home() {
                   visible: {
                     opacity: 1,
                     scale: 1,
-                    transition: { duration: 1, ease: [0.16, 1, 0.3, 1] },
+                    transition: { duration: 1, ease: [0.16, 1, 0.3, 1] as const },
                   },
                 }}
                 className="glass-card p-1"
